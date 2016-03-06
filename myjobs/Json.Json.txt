@@ -1,0 +1,189 @@
+Replace localhost:8080 as 
+prod1.groupz.in:7070/
+
+
+1 .REGISTER CANDIDATE 
+------------------------
+URL : http://localhost:8080/JobzTop/Registration?request={JSONREQUEST}
+-----
+REQUEST:
+--------
+
+{"json":  
+       {"request":
+                 {"servicetype":"21",
+                  "functiontype":"1001",
+
+                     "data":{
+                            "email":"pavanhacchhsolli@gmail.com",
+                            "password":"12345",
+                            "retypepassword":"12345"
+                           },"url":""
+                 }
+        }
+}
+
+RESPONSE :
+----------
+
+{
+  "json": {
+    "response": {
+      "servicetype": "21",
+      "functiontype": "1001",
+      "statuscode": "0",
+      "statusmessage": "Success",
+      "candidateid": 5
+    }
+  }
+}
+
+2. RESET PASSWORD EMAIL VALIDATION REQUEST :
+---------------------------------------------
+
+URL : http://localhost:8080/JobzTop/Registration?request={JSONREQUEST}
+-----------------------------------------------------------------------
+
+REQUEST:
+---------
+{"json":
+{"request":
+{"servicetype":"21",
+"functiontype":"1003",
+"email":"pavanhachholli@gmail.com",
+"url":""
+}
+}
+}
+
+
+* here url consist of a link which hits the reset password screen .backend will append candidate id to url, if the email is registered .This link will be sent to the candidate for resetting his password .
+
+
+RESPONSE :
+----------
+
+{
+  "json": {
+    "response": {
+      "servicetype": "21",
+      "functiontype": "1003",
+      "statuscode": "0",
+      "statusmessage": "Success",
+      "candidateid": 5
+    }
+  }
+}
+
+
+3.RESET PASSWORD :
+------------------
+
+URL : http://localhost:8080/JobzTop/Registration?request={JSONREQUEST}
+----------------------------------------------------------------------
+
+
+REQUEST:
+--------
+
+{
+
+    "json":{
+        "request":{
+            "servicetype":"21",
+            "functiontype":"1004",
+            "id":2,
+            "password":12345,
+            "retypepassword":12345
+        }
+    }
+
+}
+
+RESPONSE :
+----------
+
+
+{
+
+    "json":{
+        "response":{
+            "servicetype":"21",
+            "functiontype":"1004",
+            "statuscode":"0",
+            "statusmessage":"Success",
+            "candidateid": 5
+        }
+    }
+
+}
+
+
+
+4)CANDIDATE LOGIN:
+--------------
+URL : http://localhost:8080/JobzTop/Profile?request={JSON REQUEST }
+
+REQUEST:
+---------
+
+{
+
+    "json":{
+        "request":{
+            "servicetype":"21",
+            "functiontype":"1005",
+            "data":{
+                "email":"namma@gmail.com",
+                "password":"12345"
+            }
+        }
+    }
+
+}
+
+
+
+RESPONSE :
+----------
+
+    "json":{
+        "response":{
+            "servicetype":"21",
+            "functiontype":"1005",
+            "statuscode":"0",
+            "statusmessage":"Success",
+            "candidateid": 5
+        }
+    }
+
+
+
+
+
+9. Email Verification 
+----------------------
+
+
+Request :
+---------
+
+prod1.groupz.in:7070/JobzTop/ValidateEmail?id=6e35019fa5f70fbc9e4005617805186e
+
+Response :
+----------
+
+{
+
+    "json":{
+        "response":{
+            "statuscode":"0",
+            "statusmessage":"Success",
+            "candidateid":77
+        }
+    }
+
+}
+
+
+

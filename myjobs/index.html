@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+  <link href="https://cdn.rawgit.com/cornflourblue/angular-registration-login-example/master/app-content/app.css" rel="stylesheet" />
+
+<link rel="stylesheet" type="text/css" href="css/login.css">
+    
+<link rel="stylesheet" type="text/css" href="css/register.css">
+</head>
+
+<body>
+
+<div class="main-wrapper">     
+  <div ng-view></div>
+</div>
+   
+
+  <div class="credits text-center">
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+  <script src="https://code.angularjs.org/1.2.20/angular.js"></script>
+  <script src="https://code.angularjs.org/1.2.20/angular-route.js"></script>
+  <script src="https://code.angularjs.org/1.2.13/angular-cookies.js"></script>
+
+  <script src="app.js"></script>
+  <script src="app-services/authentication.service.js"></script>
+  
+  <!-- real time API storage-->
+  <script src = "app-services/user.service.js"></script>
+  <script src="app-services/flash.service.js"></script>
+
+
+  <!-- Fake user service for demo that uses local storage -->
+  <script src="app-services/user.service.js"></script>
+
+  <script src="controller/home.controller.js"></script>
+  <script src="controller/login.controller.js"></script>
+  <script src="controller/register.controller.js"></script>
+  <script src="controller/resetpassword.controller.js"></script>
+<script src="controller/setnewpassword.controller.js"></script>
+    <script src="controller/emailactivation.controller.js"></script>
+
+    
+</body>
+
+</html>
