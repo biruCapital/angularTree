@@ -18,7 +18,8 @@
 
         function login() {
             vm.dataLoading = true;
-            AuthenticationService.Login(vm.username, vm.password, function (response) {
+            var baseUrl = $location.$$absUrl.split('#')[0];
+            AuthenticationService.Login(vm.username, vm.password, baseUrl, function (response) {
                 if (response.json.response.statuscode == 0) {
                     AuthenticationService.SetCredentials(vm.username, vm.password);
                     $location.path('/');

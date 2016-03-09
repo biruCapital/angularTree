@@ -33,7 +33,7 @@
                 templateUrl: 'view/resetpasswordmailsent.view.html'
             })
 
-            .when('/setnewpassword/:token', {
+            .when('/setnewpassword', {
                 controller: 'SetNewPasswordController',
                 templateUrl: 'view/setnewpassword.view.html',
                 controllerAs: 'vm'    

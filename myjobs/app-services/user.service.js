@@ -48,7 +48,6 @@
         }
         
         function VerifyEmail(id) {
-            //console.log(id);
             return $http.get('http://prod1.groupz.in:7070/JobzTop/ValidateEmail?id=' + id).then(handleSuccess, handleError('Not success'));
         }
         

@@ -15,7 +15,7 @@
 
         return service;
 
-        function Login(usernamer, password, callback) {
+        function Login(usernamer, password, baseUrl, callback) {
 
             /* Dummy authentication for testing, uses $timeout to simulate api call
              ----------------------------------------------*/
@@ -28,15 +28,18 @@
                               "functiontype":"1005",
                               "data":{
                                 "email": usernamer,
-                                "password": password,
-                              }
+                                "password": password
+                              },
+                              "url": encodeURIComponent( baseUrl + "#VerifyEmail" )
                             }
                           }
                         }
+            console.log(json);
             UserService.Login(json)
-                .then(function (response) {
-                    callback(response);
-                });
+            .then(function (response) {
+                console.log(response);
+                callback(response);
+            });
             //}, 1000);
 
             /* Use this for real authentication

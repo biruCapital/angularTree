@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Cases</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="css/normalize.css">
+        <link href="kendoui/styles/kendo.common.min.css" rel="stylesheet" />
+        <link href="kendoui/styles/kendo.default.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/main.css">
+        <script src="kendoui/js/jquery.min.js"></script>
+        <script src="kendoui/js/kendo.web.min.js"></script>
+        <script src="common/helpers.js"></script>
+        
+        <style>
+            .crud-grid-top {
+                background: url("img/Cases_List_top.png") no-repeat 0 0 #F0F0F0;
+            }
+            .k-widget.k-window {
+                background: url('img/Details.png') no-repeat;
+                background-size: 100% 100%;
+            }
+            .k-window > div.k-popup-edit-form {
+                top: 5px;
+            }
+            body {
+                overflow: hidden;
+            }
+            .right_container {
+                background: none repeat scroll 0 0 #CCCCCC;
+                float: left;
+                margin-left: 19px;
+                width:630px;
+                height:auto;
+                min-height:437px;
+            }
+            .k-grid-content
+            {
+                height:395px;
+            }
+            .highlightTR {
+                background-color: red !important;
+            }
+            input[disabled], input[disabled]:hover{
+                background-color: lightgray;
+            }
+            .k-datetimepicker, .k-datepicker {
+                padding: 0;
+            }
+            #popup-editor-wrapper {
+                margin-left: 15px;
+            }
+            #search-fields {
+                margin-left: 8%;
+            }
+            .mrgn_b {
+                margin-right: 40px;
+            }
+            .check_box .k-edit-label {
+                min-width: 76px;
+                max-width: 76px;
+            }
+			/* Tabstrip and tabs */
+            #tabstrip .k-content {
+                overflow: auto;
+            }
+            #tabstrip {
+                min-width: 640px;
+            }
+            p.editor-title {
+                padding-top: 10px;
+                margin-bottom: 0;
+            }
+            .k-overlay {
+                width: 0px;
+                
+            }
+            #profileCompleteness{
+                width:100%;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Add your site or application content here -->
+        <div id="wrapper">
+            <p id="search-fields">
+                <b>Search by Customer Surname: </b><input type="text" id="txtSearch" />
+            </p>
+
+            <div class="crud-grid-wrapper">
+                <div class="crud-grid-top">&nbsp;</div>
+                <div id="crud-grid">
+                </div>  <!-- End #crud-grid -->
+                <div class="crud-grid-bottom">&nbsp;</div>
+            </div>
+            <script id="popup-editor" type="text/x-kendo-template">
+           <div id="popup-editor-wrapper" class="clearfix main_col">
+           <div id="profileCompleteness"></div>
+				<div id="tabstrip">
+                    <ul>
+                        <li id="detailsTab" class="k-state-active">Details</li>
+                        <li id="PropertyTab" >Property</li>
+                        <li id="ApplicationTab">Applicants</li>
+                        <li id="MortgagesTab">Mortgages</li>
+                        
+                    </ul>
+                    <div>
+			<p class="editor-title">Set the attributes for the Case:</p>
+
+                <div class="group main-group clearfix">
+
+                    <div class="standard-field-container">
+                        <div class="k-edit-label">
+                            <label for="reference">Reference:</label>
+                        </div>
+                        <div data-container-for="reference" class="k-edit-field">
+                            <input type="text" class="k-input k-textbox" name="reference" data-bind="value:reference" maxlength="30">
+                        </div>
+                    </div>
+
+                    <div class="standard-field-container">
+                        <div class="k-edit-label">
+                            <label for="customer_surname">Customer Surname:</label>
+                        </div>
+                        <div data-container-for="customer_surname" class="k-edit-field">
+                            <input type="text" class="k-input k-textbox" name="customer_surname" data-bind="value:customer_surname" maxlength="100">
+                        </div>
+                    </div>
+
+                    <div class="standard-field-container">
+                        <div class="k-edit-label">
+                            <label for="status">Status:</label>
+                        </div>
+                        <div data-container-for="status" class="k-edit-field">
+                            <input type="text" class="k-input k-textbox" name="status" data-bind="value:status" maxlength="30">
+                        </div>
+                    </div>
+
+                </div>
+				
+				<div class="group secondary-group clearfix">
+
+                    <div class="standard-field-container one-third">
+                        <div class="k-edit-label">
+                            <label for="total_loan_amount">Total Loan Amount:</label>
+                        </div>
+                        <div data-container-for="total_loan_amount" class="k-edit-field">
+                            <input required type="text" class="k-input" name="total_loan_amount" data-min="0" data-max="10000" data-type="number" data-bind="value:total_loan_amount" data-role="numerictextbox" data-format="n" data-step="0.1" data-decimals="2" role="spinbutton">
+                        </div>
+                    </div>
+
+                    <div class="standard-field-container one-third">
+                        <div class="k-edit-label">
+                            <label for="sales_id">Sales Id:</label>
+                        </div>
+                        <div data-container-for="sales_id" class="k-edit-field">
+                            <input required type="text" class="k-input" name="sales_id" data-min="0" data-type="number" data-bind="value:sales_id" data-role="numerictextbox" data-format="n0" data-step="1" data-decimals="0" role="spinbutton">
+                        </div>
+                    </div>
+
+                    <div class="standard-field-container one-third">
+                        <div data-container-for="createdate" class="k-edit-field">
+                            <input id="createDate" name="createdate" data-hidden-field="createdate" data-value-field="createdate" data-bind="value:createdate" data-format="{0:yyyy-MM-dd HH:mm:ss}" data-role="hidden" type="hidden" class="k-input" role="combobox">
+                        </div>
+                    </div>
+
+                </div>
+			
+				</div>
+				 
+                    <div>
+					 <p class="editor-title">Set the attributes for the PROPERTY:</p>
+
+                <div class="group main-group clearfix">
+
+                    <div class="standard-field-container" title="The current value of the property.">
+                        <div class="k-edit-label">
+                            <label for="property_value">Property Value:</label>
+                        </div>
+                        <div data-container-for="property_value" class="k-edit-field">
+                            <input type="text" class="k-input" name="propproperty_value" data-min="0" data-max="9999999.99" data-type="number" data-bind="value:propproperty_value" data-role="numerictextbox" data-format="n2" data-step="1" data-decimals="2" role="spinbutton">
+                        </div>
+                    </div>
+
+                    <div class="standard-field-container">
+                        <div class="k-edit-label">
+                            <label for="loan_amount">Loan Amount:</label>
+                        </div>
+                        <div data-container-for="loan_amount" class="k-edit-field">
+                            <input type="text" class="k-input" name="proploan_amount" data-min="0" data-max="9999999.99" data-type="number" data-bind="value:proploan_amount" data-role="numerictextbox" data-format="n2" data-step="1" data-decimals="2" role="spinbutton">
+                        </div>
+                    </div>
+
+                    <div class="standard-field-container" title="What type of mortgage does the customer want?">
+                        <div class="k-edit-label">
+                            <label for="type_of_mortgage">Type Of Mortgage:</label>
+                        </div>
+                        <div data-container-for="type_of_mortgage" class="k-edit-field" style="padding:0;">
+                            <input name="proptype_of_mortgage"
+                                data-bind="value:proptype_of_mortgage"
+                                data-value-field="proptype_of_mortgage"
+                                data-text-field="proptype_of_mortgage"
+                                data-source="[{ proptype_of_mortgage: 'Standard' }, { proptype_of_mortgage: 'Buy to Let' }, { proptype_of_mortgage: 'Self Build' }]"
+                                data-role="dropdownlist" />
+                        </div>
+                    </div>
+
+                    <div class="standard-field-container">
+                        <div class="k-edit-label">
+                            <label for="city">City:</label>
+                        </div>
+                        <div data-container-for="city" class="k-edit-field">
+                            <input type="text" class="k-input k-textbox" name="propcity" data-bind="value:propcity" maxlength="245">
+                        </div>
+                    </div>
+
+                    <div class="standard-field-container">
+                        <div class="k-edit-label">
+                            <label for="postcode">Postcode:</label>
+                        </div>
+                        <div data-container-for="postcode" class="k-edit-field">
+                            <input type="text" class="k-input k-textbox" name="proppostcode" data-bind="value:proppostcode" maxlength="15">
+                        </div>
+                    </div>
+
+                    <div class="standard-field-container">
+                        <div class="k-edit-label">
+                            <label for="addressnumber">Addressnumber:</label>
+                        </div>
+                        <div data-container-for="addressnumber" class="k-edit-field">
+                            <input type="text" class="k-input k-textbox" name="propaddressnumber" data-bind="value:propaddressnumber" maxlength="245">
+                        </div>
+                    </div>
+
+                    <div class="standard-field-container">
+                        <div class="k-edit-label">
+                            <label for="street1">Street1:</label>
+                        </div>
+                        <div data-container-for="street1" class="k-edit-field">
+                            <input type="text" class="k-input k-textbox" name="propstreet1" data-bind="value:propstreet1" maxlength="245">
+                        </div>
+                    </div>
+
+                    <div class="standard-field-container">
+                        <div class="k-edit-label">
+                            <label for="street2">Street2:</label>
+                        </div>
+                        <div data-container-for="street2" class="k-edit-field">
+                            <input type="text" class="k-input k-textbox" name="propstreet2" data-bind="value:propstreet2" maxlength="245">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="standard-field-group boolean-group clearfix group">
+                    <div class="standard-field-container" title="Is it a further advance?">
+                        <div class="k-edit-label">
+                            <label for="propfurther_advance">Further Advance:</label>
+                        </div>
+                        <div data-container-for="propfurther_advance" class="k-edit-field">
+                            <input type="checkbox" name="propfurther_advance" data-type="boolean" data-bind="checked:propfurther_advance">
+                        </div>
+                    </div>
+
+                    <div class="standard-field-container" title="Is it a ReMortgage?">
+                        <div class="k-edit-label">
+                            <label for="propremortgage">Remortgage:</label>
+                        </div>
+                        <div data-container-for="propremortgage" class="k-edit-field">
+                            <input type="checkbox" name="propremortgage" data-type="boolean" data-bind="checked:propremortgage">
+                        </div>
+                    </div>
+
+                    <div class="standard-field-container" title="Has the customer had any history of Financial Difficulties?">
+                        <div class="k-edit-label">
+                            <label for="propfinancial_difficultied">Financial Difficultied:</label>
+                        </div>
+                        <div data-container-for="propfinancial_difficultied" class="k-edit-field">
+                            <input type="checkbox" name="propfinancial_difficultied" data-type="boolean" data-bind="checked:propfinancial_difficultied">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="group secondary-group clearfix">
+
+                    <div class="standard-field-container one-third">
+                        <div class="k-edit-label">
+                            <label for="client_id">Client Id:</label>
+                        </div>
+                        <div data-container-for="propclient_id" class="k-edit-field">
+                            <input required type="text" class="k-input" name="propclient_id" data-min="0" data-type="number" data-bind="value:propclient_id" data-role="numerictextbox" data-format="n0" data-step="1" data-decimals="0" role="spinbutton">
+                        </div>
+                    </div>
+
+                    <div class="standard-field-container one-third">
+                        <div class="k-edit-label">
+                            <label for="propcase_id">Case Id:</label>
+                        </div>
+                        <div data-container-for="propcase_id" class="k-edit-field">
+                            <input required type="text" class="k-input" name="propcase_id" data-min="0" data-type="number" data-bind="value:propcase_id" data-role="numerictextbox" data-format="n0" data-step="1" data-decimals="0" role="spinbutton">
+                        </div>
+                    </div>
+
+                    <div class="standard-field-container one-third" title="The Customers out going existing monthly commitments.">
+                        <div class="k-edit-label">
+                            <label for="propexsisting_monthly_payments">Exsisting Monthly Payments:</label>
+                        </div>
+                        <div data-container-for="propexsisting_monthly_payments" class="k-edit-field">
+                            <input type="text" class="k-input" name="propexsisting_monthly_payments" data-min="0" data-max="9999999.99" data-type="number" data-bind="value:propexsisting_monthly_payments" data-role="numerictextbox" data-format="n2" data-step="1" data-decimals="2" role="spinbutton">
+                        </div>
+                    </div>
+
+                    <div class="standard-field-container one-third" title="If a ReMorgage the existing balance.">
+                        <div class="k-edit-label">
+                            <label for="propexsisting_mortgage_balance">Exsisting Mortgage Balance:</label>
+                        </div>
+                        <div data-container-for="propexsisting_mortgage_balance" class="k-edit-field">
+                            <input type="text" class="k-input" name="propexsisting_mortgage_balance" data-min="0" data-max="9999999.99" data-type="number" data-bind="value:propexsisting_mortgage_balance" data-role="numerictextbox" data-format="n2" data-step="1" data-decimals="2" role="spinbutton">
+                        </div>
+                    </div>
+
+                    <div class="standard-field-container one-third">
+                        
+                        <div data-container-for="propcreatedate" class="k-edit-field">
+                            <input name="propcreatedate" data-hidden-field="propcreatedate" data-value-field="propcreatedate" data-bind="value:propcreatedate" data-format="{0:yyyy-MM-dd HH:mm:ss}" data-role="hidden" type="hidden" class="k-input" role="combobox">
+                        </div>
+                    </div>
+
+                </div>
+
+
+					</div>
+                    <div>
+                        <div id="applicantsGrid"></div>
+                    </div>
+                    <div>
+                        <div id="productGrid"></div>
+                    </div>
+				</div>
+				</div>
+            </script>
+
+        </div>  <!-- End #wrapper -->
+
+        <script src="docprod-mortgage_cases/Mortgage_cases.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                // select the 1st row
+                $(function () {
+                    $('#crud-grid').data().kendoGrid.one('dataBound', function () {
+                        this.select(this.tbody.find('>tr:first'));
+                    });
+                });
+                setTimeout(function(){
+                var pb = $("#profileCompleteness").kendoProgressBar({
+                    type: "chunk",
+                    chunkCount: 3,
+                    min: 0,
+                    max: 3,
+                    value: 0
+                }).data("kendoProgressBar");
+            }, 3000);
+           
+          $('#createDate').val(Date());
+           $('#propcreateDate').val(Date());
+            });
+            
+        </script>
+    </body>
+</html>

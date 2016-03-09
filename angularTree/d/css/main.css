@@ -1,0 +1,524 @@
+/*
+ * HTML5 Boilerplate
+ *
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+body {
+    font-size: 1em;
+    line-height: 1.4;
+	background: #F0F0F0;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection declarations have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+ */
+
+img {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: none;
+	max-height: 36px;
+}
+
+/* ==========================================================================
+   Chrome Frame prompt
+   ========================================================================== */
+
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+
+body {
+    font: 400 12px Arial, Helvetica, sans-serif;
+}
+
+#wrapper {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.crud-grid-wrapper {
+    background-color: #4D4D4D;
+    border-radius: 5px;
+    float: left;
+    margin-left: 7%;
+    width: 38%;
+}
+
+#crud-grid {
+    width: /*500px*/98%;
+    margin: 0 4px;
+}
+
+.crud-grid-top {
+    height: 51px;
+    background: url("../img/grid-top.png") no-repeat 0 0;
+	width:99%;
+	background-size:100% 121px;
+}
+
+.crud-grid-bottom {
+    height: 17px;
+    margin-top: 3px;
+   /* background: url("../img/grid-bottom.jpg") repeat-x 0 0;
+	background-size:100%;*/
+}
+
+#crud-grid .k-widget.k-window {
+    width: 500px;
+    height: 500px;
+}
+
+#crud-grid .window {
+    margin: 15px;
+}
+
+/** Popup editor wrapper **/
+#popup-editor-wrapper {
+   /* margin: 0px 20px;*/
+   margin:0;
+    width: auto;
+}
+
+#popup-editor-wrapper p.editor-title {
+    margin-top: 0;
+}
+
+#popup-editor-wrapper .group {
+    border: 1px dashed #c4c4c4;   
+    margin-bottom: 20px;
+    border-radius: 5px;
+	float:left;
+	padding: 10px 0 0 17px;
+    width: 593px;
+    /*transition: background 0.2s ease-in-out;*/
+}
+
+#popup-editor-wrapper .group:hover {
+    /*background-color: #e3e3e3;*/
+}
+
+#popup-editor-wrapper .standard-field-container {
+    float: left;
+    /*margin-right: 15px;*/
+    margin-bottom: 10px;
+    width:197px;
+	/*min-height:65px;*/
+} 
+
+#popup-editor-wrapper .standard-field-container.no-margin-right {
+    margin-right: 0;
+}
+
+#popup-editor-wrapper .standard-field-container.one-third {
+    width: 30%;
+    margin-right: 3%;
+}
+
+.k-edit-form-container {
+    width: auto;
+}
+
+#popup-editor-wrapper .k-edit-field {
+    /*width: 100%;*/
+	 float: left !important;
+    width: 17px;
+}
+
+#popup-editor-wrapper .standard-field-container .k-edit-field{
+    clear: both;
+    float: left;
+}
+
+#popup-editor-wrapper .standard-field-container .k-input.k-textbox{
+
+}
+#popup-editor-wrapper .standard-field-container .k-edit-label {
+    text-align: left;
+    padding-bottom: 5px;
+    width: auto;
+    font-weight: bold;
+}
+
+#popup-editor-wrapper .standard-field-group {
+    /* clear: both; */
+	width:98.5%;
+}
+
+#popup-editor-wrapper .standard-field-group .standard-field-container {
+    /*width: 78px;*/
+	 display: flex;
+    float: left;
+    width: 110px;
+}
+
+#popup-editor-wrapper .standard-field-group .standard-field-container .k-edit-label {
+   /* height: 30px;
+    overflow: hidden;*/
+	 float: left;
+    height: 30px;
+    overflow: hidden;
+    padding-right: 10px;
+}
+
+#popup-editor-wrapper .boolean-group .k-edit-label {
+    padding-bottom: 2px;
+}
+
+#popup-editor-wrapper .main-group {
+    /*width: 642px;*/
+    float: left;
+    margin-bottom: 19px;
+}
+
+#popup-editor-wrapper .boolean-group {
+   /* float: right;
+    width: 186px;*/
+	float: left;
+   /* width:642px;*/
+    padding-bottom: 4px;
+}
+
+#popup-editor-wrapper .secondary-group {
+    float: left;
+    /*width: 642px;*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Image replacement
+ */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+    *zoom: 1;
+}
+
+
+
+
+
+div.k-window{/*width: 683px !important;*/ 
+  width:690px ; 
+  top:none !important; 
+  height: 471px !important; /*left: 195px !important;*/ 
+  left:none !important;
+ }
+.k-window > div.k-popup-edit-form {
+    padding: 1em 1% !important;
+    /*width: 89% !important;*/
+	margin:0 0.5%;
+	width:99% !important;
+	/*height:auto !important;*/
+	/*border: 5px solid #4D4D4D;*/
+	 top: /*-2px*/11px;
+	 height:442px !important;
+	 overflow:scroll;
+}
+
+
+.k-widget.k-window {
+    /*margin:0 auto !important;*/
+    position: relative;
+    width: /*823px*/54% !important;
+	/*background:none !important;*/
+	border:none !important;
+	box-shadow:none !important;
+	top: 0px !important;
+	left:2px !important;
+	padding-top:45px !important;
+   background-size:100% 100%;
+}
+
+div.k-window-content{ width: 78%;}
+
+.k-block > .k-header, .k-window-titlebar
+{ 
+width:89%; /*background-color: #000000;*/ 
+background-color:none;  
+color: #FFFFFF; padding: 15px 0;
+/*background:url('../img/ridedetails.png') no-repeat scroll 0 0 #F0F0F0 !important;
+background-size:100% 100% !important ;*/
+}
+
+
+
+
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   Theses examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (min-resolution: 144dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+
+/*2-06-2014*/
+.main_col{float:left; width: 611px !important;}
+.check_box{  padding: 10px 0 10px 10px !important;}
+.check_h{height:16px !important;}
+.mrgn_b{ margin-bottom: 0 !important;}
+/*2-06-2014*/
+
+
+.k-widget.k-datetimepicker.k-header.k-input {
+    width: 14em;
+}
+/* 09 June 2014 Ravish code */
+.k-window-titlebar.k-header {
+   display:none;
+}
+
+
+

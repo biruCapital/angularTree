@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Angular tree widget</title>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="dist/angular-tree-widget.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container page" ng-app="treeApp">
+        <div class="row presentation" ng-controller="TreeController">
+            
+            <div class="col-sm-6 col-md-4">
+                <div class="tree-container">
+                    <tree nodes='treeNodes' options='options'></tree>
+                </div>
+            </div>
+        </div>
+        <div class="row definition" ng-controller="CodeController">
+            <div ng-controller="TreeController">
+                <div class="col-sm-6">
+                    <div class="tree-container" style="min-height:200px;">
+                        <tree nodes='basicTree'></tree>
+                    </div>
+                </div>
+                
+        
+
+            </div>
+        </div>
+     
+        <hr />
+        
+    </div>
+    <footer class="panel-footer">
+        <div class="container"><p class="text-right">© 2016 Alex Suleap. All rights reserved.</p></div>
+    </footer>
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-animate.min.js"></script>
+    <script src="lib/angular-recursion.js"></script>
+    <script src="dist/angular-tree-widget.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/controllers/controller.js"></script>
+</body>
+</html>

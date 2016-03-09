@@ -50,6 +50,8 @@ app.controller('RegisterController', RegisterController);
 
         function register() {
             vm.dataLoading = true;
+            console.log($location);
+            var baseUrl = $location.$$absUrl.split('#')[0];
             var json = { "json": {
                             "request": {
                               "servicetype":"21",
@@ -59,7 +61,7 @@ app.controller('RegisterController', RegisterController);
                                 "password": vm.user.password,
                                 "retypepassword":vm.user.confirmPassword
                               },
-                              "url":"http://127.0.0.1:52438/freelance/myjobs/VerifyEmail"
+                              "url":encodeURIComponent( baseUrl + "#VerifyEmail")
                             }
                           }
                         };
@@ -67,11 +69,11 @@ app.controller('RegisterController', RegisterController);
             UserService.Create(json)
             .then(function (response) {
                 console.log(response);
-                if( !response.success ){
+                if( response.success !== undefined ){
                     FlashService.Error(response.message,  true);
                     vm.dataLoading = false;
                 } else {
-                  if (response.json.response.statuscode == 0) {
+                  if (response.json.response.statuscode == "0") {
                     FlashService.Success('Registration successful', true);
                     $location.path('/afterregister');
                   } else {
